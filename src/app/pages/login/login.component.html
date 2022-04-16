@@ -1,0 +1,23 @@
+<div id="loginContainer" class="h-screen flex justify-center items-center">
+  <div id="'loginInner">
+    <div class="mb-5">
+      <app-personally-logo class="test"></app-personally-logo>
+    </div>
+    <app-text-input-registration
+      name="email"
+      labelText="Email"
+    ></app-text-input-registration>
+    <app-text-input-registration
+      type="password"
+      name="Password"
+      labelText="Password"
+    ></app-text-input-registration>
+    <div class="flex justify-between items-center">
+      <app-black-button buttonText="Login"></app-black-button
+      ><a class="{{ underlineStyle }}" href="">Forgot Password?</a>
+    </div>
+    <p class="text-center mt-12">
+      Don't have an account? <a class="{{ underlineStyle }}" href="">Sign up</a>
+    </p>
+  </div>
+</div>

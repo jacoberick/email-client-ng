@@ -8,9 +8,10 @@ import { TextInputRegistrationComponent } from './components/text-input-registra
 import { SignupComponent } from './pages/signup/signup.component';
 import { PersonallyLogoComponent } from './components/personally-logo/personally-logo.component';
 import { BlackButtonComponent } from './components/black-button/black-button.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, TextInputRegistrationComponent, SignupComponent, PersonallyLogoComponent, BlackButtonComponent],
+  declarations: [AppComponent, PageNotFoundComponent, TextInputRegistrationComponent, SignupComponent, PersonallyLogoComponent, BlackButtonComponent, LoginComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [Title],
   bootstrap: [AppComponent],
