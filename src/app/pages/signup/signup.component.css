@@ -1,0 +1,48 @@
+#checkboxLabel {
+  position: relative;
+  padding-left: 32px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#tosCheckbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+#checkmark {
+  position: absolute;
+  top: 1;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: #aeaeae;
+  border-radius: 5px;
+}
+
+#tosCheckbox:checked ~ #checkmark {
+  background-color: #7a28ff;
+}
+
+#checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+#tosCheckbox:checked ~ #checkmark:after {
+  display: block;
+}
+
+#checkmark:after {
+  left: 9px;
+  top: 4px;
+  width: 5px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
+}
