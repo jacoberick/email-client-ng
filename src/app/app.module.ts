@@ -9,9 +9,13 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { PersonallyLogoComponent } from './components/personally-logo/personally-logo.component';
 import { BlackButtonComponent } from './components/black-button/black-button.component';
 import { LoginComponent } from './pages/login/login.component';
+import { TopBotLandingComponent } from './components/top-bot-landing/top-bot-landing.component';
+import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { HeaderComponent } from './components/header/header.component';
+import { InfoLandingComponent } from './components/info-landing/info-landing.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, TextInputRegistrationComponent, SignupComponent, PersonallyLogoComponent, BlackButtonComponent, LoginComponent],
+  declarations: [AppComponent, PageNotFoundComponent, TextInputRegistrationComponent, SignupComponent, PersonallyLogoComponent, BlackButtonComponent, LoginComponent, TopBotLandingComponent, WelcomeComponent, HeaderComponent, InfoLandingComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [Title],
   bootstrap: [AppComponent],

@@ -1,0 +1,45 @@
+<!-- info landing container -->
+<div
+  [ngStyle]="{
+    'background-color': bgColor,
+    color: bgColor === '#fefefe' ? '#121212' : '#fefefe'
+  }"
+  class="relative flex justify-center {{ minHeight }}"
+>
+  <!-- top two images -->
+  <div class="flex justify-between max-w-6.5xl w-full absolute -top-40">
+    <img class="{{ imageOneClasses }}" src="{{ imageOne }}" />
+    <img class="{{ imageTwoClasses }}" src="{{ imageTwo }}" />
+  </div>
+
+  <!-- text content -->
+  <div class="px-16 flex justify-center items-center max-w-6.5xl">
+    <div
+      [ngClass]="
+        leftIsTitle
+          ? 'text-7xl leading-lazy'
+          : 'text-4xl font-light leading-goosey'
+      "
+      class="w-1/2"
+    >
+      <img *ngIf="comingSoon" src="../../assets/coming-soon.png" />
+      <p>{{ textOne }}</p>
+    </div>
+    <p
+      [ngClass]="
+        rightIsTitle
+          ? 'text-7xl leading-lazy'
+          : 'text-4xl font-light leading-goosey'
+      "
+      class="w-1/2 pl-8"
+    >
+      {{ textTwo }}
+    </p>
+  </div>
+
+  <!-- bottom two images -->
+  <div class="flex justify-between max-w-6.5xl absolute -bottom-40 w-full z-10">
+    <img class="{{ imageThreeClasses }}" src="{{ imageThree }}" />
+    <img class="{{ imageFourClasses }}" src="{{ imageFour }}" />
+  </div>
+</div>

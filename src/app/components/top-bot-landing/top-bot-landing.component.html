@@ -1,0 +1,20 @@
+<app-header *ngIf="showHeader"></app-header>
+<div class="flex items-center min-h-topBot max-w-6.5xl mx-auto">
+  <div class="pl-44 mb-20">
+    <h1 class="text-3.5xl">{{ headerText }}</h1>
+    <p class="text-1.5xl mt-2 mb-8">{{ description }}</p>
+    <input
+      class="border-3 border-black w-96 h-12 focus:border-purple outline-none pl-3 placeholder-lavender text-sm"
+      type="text"
+      name="email"
+      placeholder="Your email"
+    />
+    <button class="h-12 bg-black text-white px-4 font-light">
+      Get Started
+    </button>
+  </div>
+</div>
+<p *ngIf="showCopyright" class="text-center text-xxs pb-2">
+  © 2017-2022 ReadyBase, LLC D/B/A Personally. Terms and Privacy. Made with
+  <span class="text-red-600">♥</span> in Nashville, TN.
+</p>
