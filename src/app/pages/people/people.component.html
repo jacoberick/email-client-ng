@@ -1,0 +1,59 @@
+<div class="flex pr-16">
+  <app-sidebar></app-sidebar>
+  <div class="flex-1">
+    <app-page-header
+      headerText="People"
+      linkText="Add Person"
+      imgLink="../../assets/people-page-icons/white-person-icon.png"
+      route="/people/add"
+    ></app-page-header>
+    <div class="max-w-3.5xl">
+      <div class="my-8 flex">
+        <input
+          class="border-3 border-black w-96 h-12 focus:border-purple outline-none pl-3 placeholder-lavender text-sm"
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search by name or email..."
+        />
+        <label
+          for="search"
+          class="bg-black w-16 flex justify-center items-center"
+        >
+          <img
+            class=""
+            src="../../assets/people-page-icons/search-icon.png"
+            alt=""
+          />
+        </label>
+      </div>
+      <hr class="mt-8 border border-black" />
+      <div class="mt-4 mb-8 text-xs font-bold flex">
+        <p>61 People</p>
+        <p class="ml-4">51 Subscribed</p>
+      </div>
+      <div class="flex justify-between mb-3">
+        <div class="flex items-center">
+          <p class="font-bold">John Doe</p>
+          <p class="ml-2">(jacobewhitedev@gmail.com)</p>
+          <p class="text-xs text-gray-500 ml-4">Unsubscribed</p>
+        </div>
+        <p>Added 5/3/2019</p>
+      </div>
+      <div class="flex justify-between mb-3">
+        <div class="flex">
+          <p class="font-bold">John Doe</p>
+          <p class="ml-2">(jacobewhitedev@gmail.com)</p>
+        </div>
+        <p>Added 5/3/2019</p>
+      </div>
+      <div class="flex justify-between mb-3">
+        <div class="flex">
+          <p class="font-bold">John Doe</p>
+          <p class="ml-2">(jacobewhitedev@gmail.com)</p>
+        </div>
+        <p>Added 5/3/2019</p>
+      </div>
+    </div>
+  </div>
+</div>

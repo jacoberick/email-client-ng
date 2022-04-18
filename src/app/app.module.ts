@@ -16,6 +16,7 @@ import { InfoLandingComponent } from './components/info-landing/info-landing.com
 import { BroadcastsComponent } from './pages/broadcasts/broadcasts.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { PeopleComponent } from './pages/people/people.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
     BroadcastsComponent,
     SidebarComponent,
     PageHeaderComponent,
+    PeopleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [Title],
