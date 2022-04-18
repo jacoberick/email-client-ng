@@ -1,0 +1,35 @@
+<div class="py-10 pl-7 max-w-sidebar">
+  <div class="flex">
+    <img
+      class="self-center"
+      src="../../assets/dot-arrays/logo-for-username.png"
+      alt="Dot array graphic"
+    />
+    <p class="ml-3">Jacob</p>
+  </div>
+  <div class="mt-12">
+    <a
+      *ngFor="let el of sidebarInfoArr"
+      class="flex mb-5 items-center"
+      routerLink="{{ el.route }}"
+    >
+      <img class="self-center" src="{{ el.icon }}" alt="{{ el.text }} icon" />
+      <p
+        [ngClass]="
+          currentRoute.includes(el.text.toLowerCase())
+            ? 'font-bold'
+            : 'opacity-60'
+        "
+        class="pl-3"
+      >
+        {{ el.text }}
+      </p>
+      <p
+        *ngIf="false"
+        class="text-xs ml-2 bg-purple rounded h-5 w-5 text-white flex items-center justify-center"
+      >
+        5
+      </p>
+    </a>
+  </div>
+</div>

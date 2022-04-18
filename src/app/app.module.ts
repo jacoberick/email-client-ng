@@ -13,9 +13,25 @@ import { TopBotLandingComponent } from './components/top-bot-landing/top-bot-lan
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InfoLandingComponent } from './components/info-landing/info-landing.component';
+import { BroadcastsComponent } from './pages/broadcasts/broadcasts.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, TextInputRegistrationComponent, SignupComponent, PersonallyLogoComponent, BlackButtonComponent, LoginComponent, TopBotLandingComponent, WelcomeComponent, HeaderComponent, InfoLandingComponent],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent,
+    TextInputRegistrationComponent,
+    SignupComponent,
+    PersonallyLogoComponent,
+    BlackButtonComponent,
+    LoginComponent,
+    TopBotLandingComponent,
+    WelcomeComponent,
+    HeaderComponent,
+    InfoLandingComponent,
+    BroadcastsComponent,
+    SidebarComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [Title],
   bootstrap: [AppComponent],

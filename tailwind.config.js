@@ -30,6 +30,7 @@ module.exports = {
       },
       maxWidth: {
         "6.5xl": "75rem",
+        sidebar: "16rem",
       },
       lineHeight: {
         goosey: "2.8rem",
