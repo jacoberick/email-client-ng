@@ -29,7 +29,11 @@ module.exports = {
         infoLand: "50rem",
       },
       maxWidth: {
+        "2.5xl": "44rem",
+        "3.5xl": "49rem",
         "6.5xl": "75rem",
+      },
+      minWidth: {
         sidebar: "16rem",
       },
       lineHeight: {

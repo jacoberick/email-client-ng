@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-broadcasts',
   templateUrl: './broadcasts.component.html',
-  styleUrls: ['./broadcasts.component.css']
+  styleUrls: ['./broadcasts.component.css'],
 })
 export class BroadcastsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
