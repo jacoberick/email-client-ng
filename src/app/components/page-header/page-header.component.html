@@ -1,7 +1,11 @@
 <div class="mt-6 max-w-3.5xl">
   <div class="flex justify-between">
     <h1 class="text-3.5xl">{{ headerText }}</h1>
-    <a class="flex bg-black text-white px-6 py-3" routerLink="{{ route }}">
+    <a
+      *ngIf="showButton"
+      class="flex bg-black text-white px-6 py-3"
+      routerLink="{{ route }}"
+    >
       <img class="self-center mr-2" src="{{ imgLink }}" alt="Link icon" />
       <p>{{ linkText }}</p>
     </a>

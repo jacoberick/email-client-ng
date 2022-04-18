@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { BroadcastsComponent } from './pages/broadcasts/broadcasts.component';
 import { PeopleComponent } from './pages/people/people.component';
+import { ResponsesComponent } from './pages/responses/responses.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
     data: { title: 'People' },
     path: 'people',
     component: PeopleComponent,
+  },
+  {
+    data: { title: 'Responses' },
+    path: 'responses',
+    component: ResponsesComponent,
   },
   {
     data: { title: '404 Not Found' },

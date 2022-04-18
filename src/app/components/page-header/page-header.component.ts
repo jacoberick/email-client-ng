@@ -10,6 +10,7 @@ export class PageHeaderComponent implements OnInit {
   @Input() linkText!: string;
   @Input() imgLink!: string;
   @Input() route!: string;
+  @Input() showButton: boolean = true;
 
   constructor() {}
 

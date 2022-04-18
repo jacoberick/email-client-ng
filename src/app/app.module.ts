@@ -17,6 +17,7 @@ import { BroadcastsComponent } from './pages/broadcasts/broadcasts.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { PeopleComponent } from './pages/people/people.component';
+import { ResponsesComponent } from './pages/responses/responses.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PeopleComponent } from './pages/people/people.component';
     SidebarComponent,
     PageHeaderComponent,
     PeopleComponent,
+    ResponsesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [Title],
