@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PeopleEditAddEnum } from '../../enums/people-edit-add-enum';
 
 interface peopleInput {
   labelText: string;
@@ -13,6 +14,10 @@ interface peopleInput {
 })
 export class PeopleFormComponent implements OnInit {
   @Input() buttonText!: string;
+  @Input() actionType!: PeopleEditAddEnum;
+  editEnum: PeopleEditAddEnum = PeopleEditAddEnum.edit;
+  addEnum: PeopleEditAddEnum = PeopleEditAddEnum.add;
+
   inputInfoArray: Array<peopleInput> = [
     {
       labelText: 'First Name',
