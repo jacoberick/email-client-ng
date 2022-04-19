@@ -20,6 +20,7 @@ import { ResponsesComponent } from './pages/responses/responses.component';
 import { PeopleComponent } from './pages/people-pages/people/people.component';
 import { AddPeopleComponent } from './pages/people-pages/add-people/add-people.component';
 import { PeopleFormComponent } from './components/people-form/people-form.component';
+import { EditPeopleComponent } from './pages/people-pages/edit-people/edit-people.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { PeopleFormComponent } from './components/people-form/people-form.compon
     ResponsesComponent,
     AddPeopleComponent,
     PeopleFormComponent,
+    EditPeopleComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [Title],

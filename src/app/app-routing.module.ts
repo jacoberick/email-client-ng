@@ -8,6 +8,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { BroadcastsComponent } from './pages/broadcasts/broadcasts.component';
 import { PeopleComponent } from './pages/people-pages/people/people.component';
 import { AddPeopleComponent } from './pages/people-pages/add-people/add-people.component';
+import { EditPeopleComponent } from './pages/people-pages/edit-people/edit-people.component';
 import { ResponsesComponent } from './pages/responses/responses.component';
 
 const routes: Routes = [
@@ -32,6 +33,11 @@ const routes: Routes = [
     component: BroadcastsComponent,
   },
   {
+    data: { title: 'Edit People' },
+    path: 'people/edit/:id',
+    component: EditPeopleComponent,
+  },
+  {
     data: { title: 'Add People' },
     path: 'people/add',
     component: AddPeopleComponent,
@@ -41,7 +47,6 @@ const routes: Routes = [
     path: 'people',
     component: PeopleComponent,
   },
-
   {
     data: { title: 'Responses' },
     path: 'responses',
