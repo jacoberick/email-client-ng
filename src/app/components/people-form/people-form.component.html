@@ -1,0 +1,23 @@
+<div class="max-w-3.5xl">
+  <div *ngFor="let input of inputInfoArray" class="my-8 flex">
+    <label
+      for="{{ input.name }}"
+      class="bg-black text-white px-7 flex justify-center items-center whitespace-nowrap"
+    >
+      {{ input.labelText }}
+    </label>
+    <input
+      class="w-full border-3 border-black h-12 focus:border-purple outline-none pl-3 placeholder-lavender text-sm mr-40"
+      type="text"
+      name="{{ input.name }}"
+      id="{{ input.name }}"
+      placeholder="{{ input.placeholderText }}"
+    />
+  </div>
+  <hr class="my-8 border border-black" />
+  <button
+    class="border-3 border-purple text-purple p-2 hover:bg-purple hover:text-white transition-all"
+  >
+    {{ buttonText }}
+  </button>
+</div>

@@ -16,9 +16,10 @@ import { InfoLandingComponent } from './components/info-landing/info-landing.com
 import { BroadcastsComponent } from './pages/broadcasts/broadcasts.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
-import { PeopleComponent } from './pages/people/people.component';
 import { ResponsesComponent } from './pages/responses/responses.component';
-
+import { PeopleComponent } from './pages/people-pages/people/people.component';
+import { AddPeopleComponent } from './pages/people-pages/add-people/add-people.component';
+import { PeopleFormComponent } from './components/people-form/people-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,8 @@ import { ResponsesComponent } from './pages/responses/responses.component';
     PageHeaderComponent,
     PeopleComponent,
     ResponsesComponent,
+    AddPeopleComponent,
+    PeopleFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [Title],

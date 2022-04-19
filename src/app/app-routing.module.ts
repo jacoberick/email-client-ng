@@ -6,7 +6,8 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { BroadcastsComponent } from './pages/broadcasts/broadcasts.component';
-import { PeopleComponent } from './pages/people/people.component';
+import { PeopleComponent } from './pages/people-pages/people/people.component';
+import { AddPeopleComponent } from './pages/people-pages/add-people/add-people.component';
 import { ResponsesComponent } from './pages/responses/responses.component';
 
 const routes: Routes = [
@@ -31,10 +32,16 @@ const routes: Routes = [
     component: BroadcastsComponent,
   },
   {
+    data: { title: 'Add People' },
+    path: 'people/add',
+    component: AddPeopleComponent,
+  },
+  {
     data: { title: 'People' },
     path: 'people',
     component: PeopleComponent,
   },
+
   {
     data: { title: 'Responses' },
     path: 'responses',
