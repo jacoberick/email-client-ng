@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { AppComponent } from './app.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { BroadcastsComponent } from './pages/broadcasts/broadcasts.component';
+import { BroadcastsComponent } from './pages/broadcasts-pages/broadcasts/broadcasts.component';
+import { IdBroadcastComponent } from './pages/broadcasts-pages/id-broadcast/id-broadcast.component';
 import { PeopleComponent } from './pages/people-pages/people/people.component';
 import { AddPeopleComponent } from './pages/people-pages/add-people/add-people.component';
 import { EditPeopleComponent } from './pages/people-pages/edit-people/edit-people.component';
@@ -28,13 +28,18 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
+    data: { title: 'ID Broadcast' },
+    path: 'broadcasts/:id',
+    component: IdBroadcastComponent,
+  },
+  {
     data: { title: 'Broadcasts' },
     path: 'broadcasts',
     component: BroadcastsComponent,
   },
   {
     data: { title: 'Edit People' },
-    path: 'people/edit/:id',
+    path: 'people/:id',
     component: EditPeopleComponent,
   },
   {

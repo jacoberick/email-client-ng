@@ -12,6 +12,7 @@ export class PageHeaderComponent implements OnInit {
   @Input() route!: string;
   @Input() showButton: boolean = false;
   @Input() showMenu: boolean = false;
+  @Input() isBroadcast: boolean = false;
 
   constructor() {}
 

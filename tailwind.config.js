@@ -12,6 +12,7 @@ module.exports = {
         "13px": ".85rem",
         "1.5xl": "1.32rem",
         "3.5xl": "2rem",
+        "4.5xl": "2.5rem",
       },
       colors: {
         black: "#121212",
