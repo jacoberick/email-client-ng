@@ -22,6 +22,9 @@ import { AddPeopleComponent } from './pages/people-pages/add-people/add-people.c
 import { PeopleFormComponent } from './components/people-form/people-form.component';
 import { EditPeopleComponent } from './pages/people-pages/edit-people/edit-people.component';
 import { IdBroadcastComponent } from './pages/broadcasts-pages/id-broadcast/id-broadcast.component';
+import { CreateBroadcastComponent } from './pages/create-broadcast/create-broadcast.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,8 +47,9 @@ import { IdBroadcastComponent } from './pages/broadcasts-pages/id-broadcast/id-b
     PeopleFormComponent,
     EditPeopleComponent,
     IdBroadcastComponent,
+    CreateBroadcastComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, EditorModule],
   providers: [Title],
   bootstrap: [AppComponent],
 })

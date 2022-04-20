@@ -5,6 +5,7 @@ module.exports = {
       fontFamily: {
         sans: ["Roboto", "sans-serif"],
         inter: ["Inter", "sans-serif"],
+        arial: ["Arimo", "sans-serif"],
       },
       fontSize: {
         "5px": ".3125rem",
@@ -18,6 +19,7 @@ module.exports = {
         black: "#121212",
         purple: "#7A28FF",
         lavender: "#c39eff",
+        translucentPurp: "#e1cfff",
       },
       boxShadow: {
         backToHome: "0 0px 20px rgba(122, 40, 255, 0.8)",

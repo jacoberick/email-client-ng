@@ -1,0 +1,55 @@
+<div class="flex pr-16">
+  <app-sidebar></app-sidebar>
+  <div class="flex-1 max-w-3.5xl mt-8 ml-12">
+    <a class="flex items-center" routerLink="/broadcasts">
+      <img
+        class="self-center mr-1"
+        src="../../../assets/broadcasts-page-icons/back-arrow.png"
+        alt="back arrow"
+      />
+      <p class="text-xxs font-bold">Broadcasts</p>
+    </a>
+    <div class="mt-8">
+      <input
+        class="outline-none text-4.5xl placeholder-translucentPurp font-arial"
+        type="text"
+        placeholder="Email Subject"
+      />
+      <hr class="border border-black mt-3" />
+      <editor
+        class="mt-8 editable-editor"
+        apiKey="jyjlabakiev6n1dbiy6dkinwd9479cuocr2e8tyahl3ulrs3"
+        [init]="{
+          content_style:
+            ' body {font-family: arimo, sans-serif;}.mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before {font-weight: 300; font-family: arimo, sans-serif; font-size: 2.5rem; top: -1rem; color: #E1CFFF;}
+             .mce-content-body:not([dir=rtl])[data-mce-placeholder]:not(.mce-visualblocks)::before {left: 0rem; } ,',
+
+          placeholder: 'Message',
+          height: 400,
+          menubar: false,
+          plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+          ],
+          toolbar: 'h1 | h2 | h3 | bullist| numlist | bold | italic | underline'
+        }"
+      ></editor>
+      <hr class="border border-black mb-7" />
+      <div class="flex">
+        <button
+          class="flex items-center border-4 border-purple py-2 px-4 hover:scale-105 transition-all"
+        >
+          <img
+            src="../../../assets/broadcasts-page-icons/preview-icon.png"
+            alt=""
+          />
+          <p class="ml-2 text-purple">Preview and Send</p>
+        </button>
+        <button class="text-purple ml-10 hover:scale-105 transition-all">
+          Save as Draft
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
