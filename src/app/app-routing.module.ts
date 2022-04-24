@@ -48,15 +48,15 @@ const routes: Routes = [
     canActivate: [AuthGaurd],
   },
   {
-    data: { title: 'Edit People' },
-    path: 'people/:id',
-    component: EditPeopleComponent,
-    canActivate: [AuthGaurd],
-  },
-  {
     data: { title: 'Add People' },
     path: 'people/add',
     component: AddPeopleComponent,
+    canActivate: [AuthGaurd],
+  },
+  {
+    data: { title: 'Edit People' },
+    path: 'people/:id',
+    component: EditPeopleComponent,
     canActivate: [AuthGaurd],
   },
   {

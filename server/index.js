@@ -5,6 +5,7 @@ require("dotenv").config();
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const bodyParser = require("body-parser");
+const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const { nextTick } = require("process");
 const app = express();
@@ -25,6 +26,19 @@ const db = mysql.createConnection({
   multipleStatements: true,
 });
 
+db.connect((err) => {
+  if (err) throw err;
+  console.log("MySql Connected.");
+  let sql = `CREATE DATABASE IF NOT EXISTS emailclientdb; 
+    CREATE TABLE IF NOT EXISTS users (user_id VARCHAR(255), first_name VARCHAR(255), 
+    last_name VARCHAR(255), email VARCHAR(255), password VARCHAR(255));`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    console.log("Database is connected and ready.");
+  });
+});
+
+// initialise strategy for passport
 passport.use(
   new LocalStrategy(
     {
@@ -65,24 +79,13 @@ passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 
-db.connect((err) => {
-  if (err) throw err;
-  console.log("MySql Connected.");
-  let sql = `CREATE DATABASE IF NOT EXISTS emailclientdb; 
-    CREATE TABLE IF NOT EXISTS users (first_name VARCHAR(255), 
-    last_name VARCHAR(255), email VARCHAR(255), password VARCHAR(255));`;
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    console.log("Database is connected and ready.");
-  });
-});
-
-// passport.js
-
 // requests
+
+// signup POST
 app.post("/signup", async (req, res) => {
   const { first_name, last_name, email, password } = req.body;
   const success = true;
+  const user_id = crypto.randomBytes(16).toString("hex");
 
   db.query(`SELECT * FROM users WHERE email = '${email}'`, (err, result) => {
     if (err) throw error;
@@ -96,7 +99,7 @@ app.post("/signup", async (req, res) => {
 
     bcrypt.hash(password, saltRounds, (err, hash) => {
       if (err) throw err;
-      let sql = `INSERT INTO users (first_name, last_name, email, password) VALUES ('${first_name}', '${last_name}', '${email}', '${hash}');`;
+      let sql = `INSERT INTO users (user_id, first_name, last_name, email, password) VALUES ('${user_id}', '${first_name}', '${last_name}', '${email}', '${hash}');`;
       db.query(sql, (err, user) => {
         if (err) throw err;
         res.json({ first_name, last_name, email, success });
@@ -105,6 +108,7 @@ app.post("/signup", async (req, res) => {
   });
 });
 
+// login POST
 app.post("/login", passport.authenticate("local", {}), function (req, res) {
   const { email } = req.body;
   db.query(`SELECT * FROM users WHERE email = '${email}'`, (err, result) => {

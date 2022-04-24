@@ -11,6 +11,7 @@
     <div class="max-w-3.5xl">
       <div class="my-8 flex">
         <input
+          (keyup)="filterPeopleArr($event)"
           class="border-3 border-black w-96 h-12 focus:border-purple outline-none pl-3 placeholder-lavender text-sm"
           type="text"
           name="search"
@@ -34,38 +35,22 @@
         <p class="ml-4">51 Subscribed</p>
       </div>
       <a
-        routerLink="edit/id"
-        class="flex justify-between mb-3 hover:bg-violet-200 transition-all"
+        *ngFor="let people of filteredPeopleList"
+        routerLink="/people/{{ people.name }}"
+        class="flex justify-between mb-3 hover:bg-violet-200 transition-all hover:rounded-sm"
       >
         <div class="flex items-center">
-          <p class="font-bold">John Doe</p>
-          <p class="ml-2">(jacobewhitedev@gmail.com)</p>
-          <p class="text-xs text-gray-500 ml-4">Unsubscribed</p>
+          <p class="font-bold">{{ people.name }}</p>
+          <p class="ml-2">({{ people.email }})</p>
+          <p *ngIf="!people.subscribed" class="text-xs text-gray-500 ml-4">
+            Unsubscribed
+          </p>
         </div>
-        <p>Added 5/3/2019</p>
+        <p>{{ people.dateAdded }}</p>
       </a>
-      <a
-        routerLink="edit/test"
-        class="flex justify-between mb-3 hover:bg-violet-200 transition-all"
-      >
-        <div class="flex items-center">
-          <p class="font-bold">John Doe</p>
-          <p class="ml-2">(jacobewhitedev@gmail.com)</p>
-          <p class="text-xs text-gray-500 ml-4">Unsubscribed</p>
-        </div>
-        <p>Added 5/3/2019</p>
-      </a>
-      <a
-        routerLink="edit/test"
-        class="flex justify-between mb-3 hover:bg-violet-200 transition-all"
-      >
-        <div class="flex items-center">
-          <p class="font-bold">John Doe</p>
-          <p class="ml-2">(jacobewhitedev@gmail.com)</p>
-          <p class="text-xs text-gray-500 ml-4">Unsubscribed</p>
-        </div>
-        <p>Added 5/3/2019</p>
-      </a>
+      <p *ngIf="filteredPeopleList.length === 0" class="text-center">
+        No people found :(
+      </p>
     </div>
   </div>
 </div>

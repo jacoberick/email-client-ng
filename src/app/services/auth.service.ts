@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  // checks session storage for a successful auth
   isAuthed: boolean =
     sessionStorage.getItem('auth') != null
       ? JSON.parse(sessionStorage.getItem('auth') as string)

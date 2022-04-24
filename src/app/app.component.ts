@@ -15,6 +15,7 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
+    // creates dynamic browser titles
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
