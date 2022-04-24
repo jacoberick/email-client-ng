@@ -16,6 +16,7 @@ interface sidebarObject {
 })
 export class SidebarComponent implements OnInit {
   currentRoute!: any;
+  usersFirstName!: string;
 
   sidebarInfoArr: Array<sidebarObject> = [
     {
@@ -39,5 +40,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.currentRoute = this.router.url;
+    this.usersFirstName = JSON.parse(
+      sessionStorage.getItem('auth') as string
+    ).first_name;
   }
 }
