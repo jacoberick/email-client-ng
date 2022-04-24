@@ -11,6 +11,7 @@ import { CreateBroadcastComponent } from './pages/create-broadcast/create-broadc
 import { AddPeopleComponent } from './pages/people-pages/add-people/add-people.component';
 import { EditPeopleComponent } from './pages/people-pages/edit-people/edit-people.component';
 import { ResponsesComponent } from './pages/responses/responses.component';
+import { AuthGaurdService as AuthGaurd } from './services/auth-gaurd.service';
 
 const routes: Routes = [
   {
@@ -32,36 +33,43 @@ const routes: Routes = [
     data: { title: 'Create Broadcast' },
     path: 'broadcasts/create',
     component: CreateBroadcastComponent,
+    canActivate: [AuthGaurd],
   },
   {
     data: { title: 'ID Broadcast' },
     path: 'broadcasts/:id',
     component: IdBroadcastComponent,
+    canActivate: [AuthGaurd],
   },
   {
     data: { title: 'Broadcasts' },
     path: 'broadcasts',
     component: BroadcastsComponent,
+    canActivate: [AuthGaurd],
   },
   {
     data: { title: 'Edit People' },
     path: 'people/:id',
     component: EditPeopleComponent,
+    canActivate: [AuthGaurd],
   },
   {
     data: { title: 'Add People' },
     path: 'people/add',
     component: AddPeopleComponent,
+    canActivate: [AuthGaurd],
   },
   {
     data: { title: 'People' },
     path: 'people',
     component: PeopleComponent,
+    canActivate: [AuthGaurd],
   },
   {
     data: { title: 'Responses' },
     path: 'responses',
     component: ResponsesComponent,
+    canActivate: [AuthGaurd],
   },
   {
     data: { title: '404 Not Found' },

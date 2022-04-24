@@ -6,8 +6,10 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  // holds auth state
-  isAuthed: boolean = false;
+  isAuthed: boolean =
+    sessionStorage.getItem('auth') != null
+      ? JSON.parse(sessionStorage.getItem('auth') as string)
+      : false;
 
   constructor(private router: Router) {}
 
