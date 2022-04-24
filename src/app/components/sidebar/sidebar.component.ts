@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 interface sidebarObject {
   icon: string;
@@ -36,7 +37,12 @@ export class SidebarComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authservice: AuthService) {}
+
+  logMeOut() {
+    this.authservice.onLogout();
+    this.router.navigate(['/login']);
+  }
 
   ngOnInit() {
     this.currentRoute = this.router.url;

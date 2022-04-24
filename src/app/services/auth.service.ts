@@ -17,6 +17,10 @@ export class AuthService {
     sessionStorage.setItem('auth', responseObj);
   }
 
+  onLogout() {
+    sessionStorage.clear();
+  }
+
   // onSubmit function for login and signup forms
   async handleSubmit(formData: FormGroup, path: string): Promise<void> {
     await fetch(`http://localhost:3000/${path}`, {
