@@ -31,8 +31,8 @@
       </div>
       <hr class="mt-8 border border-black" />
       <div class="mt-4 mb-8 text-xs font-bold flex">
-        <p>61 People</p>
-        <p class="ml-4">51 Subscribed</p>
+        <p>{{ peopleInfoArr.length }} people</p>
+        <p class="ml-4">{{ numOfSubs }} Subscribed</p>
       </div>
       <a
         *ngFor="let people of filteredPeopleList"

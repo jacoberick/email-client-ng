@@ -31,6 +31,9 @@ export class PeopleComponent implements OnInit {
   // list to render subscriber elements from
   filteredPeopleList: Array<any> = [...this.peopleInfoArr];
 
+  numOfSubs: Number = this.peopleInfoArr.filter((person) => person.subscribed)
+    .length;
+
   constructor() {}
 
   filterPeopleArr(event: KeyboardEvent) {
