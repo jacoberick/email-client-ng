@@ -6,19 +6,32 @@
     <div class="mb-5">
       <app-personally-logo class="test"></app-personally-logo>
     </div>
-    <app-text-input-registration
-      name="email"
-      labelText="Email"
-    ></app-text-input-registration>
-    <app-text-input-registration
-      type="password"
-      name="Password"
-      labelText="Password"
-    ></app-text-input-registration>
-    <div class="flex justify-between items-center">
-      <app-black-button buttonText="Login"></app-black-button
-      ><a class="{{ underlineStyle }}" href="">Forgot Password?</a>
-    </div>
+    <form
+      [formGroup]="loginForm"
+      action="/login"
+      method="post"
+      (ngSubmit)="onSubmit()"
+    >
+      <app-text-input-registration
+        name="email"
+        type="text"
+        labelText="Email"
+        [parentForm]="loginForm"
+      ></app-text-input-registration>
+      <app-text-input-registration
+        type="password"
+        name="password"
+        labelText="Password"
+        [parentForm]="loginForm"
+      ></app-text-input-registration>
+      <div class="flex justify-between items-center">
+        <app-black-button
+          [disabled]="false"
+          buttonText="Login"
+        ></app-black-button
+        ><a class="{{ underlineStyle }}" href="">Forgot Password?</a>
+      </div>
+    </form>
     <p class="text-center mt-12">
       Don't have an account?
       <a class="{{ underlineStyle }}" routerLink="/signup">Sign up</a>.

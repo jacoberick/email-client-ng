@@ -5,41 +5,55 @@
   <div id="signupInner">
     <app-personally-logo></app-personally-logo>
     <p class="text-3.5xl font-normal my-9 text-center">Create your account.</p>
-    <app-text-input-registration
-      labelText="First Name"
-      name="fName"
-    ></app-text-input-registration>
-    <app-text-input-registration
-      labelText="Last Name"
-      name="lName"
-    ></app-text-input-registration>
-    <app-text-input-registration
-      labelText="Email"
-      name="email"
-    ></app-text-input-registration>
-    <app-text-input-registration
-      labelText="Password"
-      type="password"
-      name="password"
-    ></app-text-input-registration>
-    <app-text-input-registration
-      labelText="Confirm Password"
-      type="password"
-      name="confirmPassword"
-    ></app-text-input-registration>
-    <div class="mt-6">
-      <label id="checkboxLabel" for="tosCheckbox" class="font-inter text-13px"
-        >I agree to the
-        <a class="{{ underlineStyle }}">terms of use</a>
-        and
-        <a class="{{ underlineStyle }}">privacy policy.</a>
-        <input type="checkbox" id="tosCheckbox" name="tosCheckbox" />
-        <span id="checkmark"></span
-      ></label>
-    </div>
-    <div class="mt-5">
-      <app-black-button buttonText="Create Account"></app-black-button>
-    </div>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <app-text-input-registration
+        labelText="First Name"
+        name="first_name"
+        [parentForm]="signupForm"
+      ></app-text-input-registration>
+      <app-text-input-registration
+        labelText="Last Name"
+        name="last_name"
+        [parentForm]="signupForm"
+      ></app-text-input-registration>
+      <app-text-input-registration
+        labelText="Email"
+        name="email"
+        [parentForm]="signupForm"
+      ></app-text-input-registration>
+      <app-text-input-registration
+        labelText="Password"
+        type="password"
+        name="password"
+        [parentForm]="signupForm"
+      ></app-text-input-registration>
+      <app-text-input-registration
+        labelText="Confirm Password"
+        type="password"
+        name="confirmPassword"
+        [parentForm]="signupForm"
+      ></app-text-input-registration>
+      <div class="mt-6">
+        <label id="checkboxLabel" for="tosCheckbox" class="font-inter text-13px"
+          >I agree to the
+          <a class="{{ underlineStyle }}">terms of use</a>
+          and
+          <a class="{{ underlineStyle }}">privacy policy.</a>
+          <input
+            (click)="handleTosChecked()"
+            type="checkbox"
+            id="tosCheckbox"
+            name="tosCheckbox" />
+          <span id="checkmark"></span
+        ></label>
+      </div>
+      <div class="mt-5">
+        <app-black-button
+          [disabled]="!tosChecked"
+          buttonText="Create Account"
+        ></app-black-button>
+      </div>
+    </form>
     <p class="mt-8">
       Already have an account?
       <a class="{{ underlineStyle }}" routerLink="/login">Login.</a>

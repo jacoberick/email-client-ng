@@ -1,11 +1,11 @@
-<div class="flex flex-col mb-4">
+<div [formGroup]="parentForm" class="flex flex-col mb-4">
   <label class="font-bold text-13px mb-1" for="{{ name }}">{{
     labelText
   }}</label>
   <input
-    class="border-3 border-black w-96 h-12 focus:border-purple outline-none text-2xl p-1"
+    class="border-3 border-black w-96 h-12 focus:border-purple outline-none p-1"
     type="{{ type }}"
     id="{{ name }}"
-    name="{{ name }}"
+    formControlName="{{ name }}"
   />
 </div>

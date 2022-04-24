@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BlackButtonComponent implements OnInit {
   @Input() buttonText!: string;
+  @Input() disabled: boolean = true;
 
   constructor() {}
 
