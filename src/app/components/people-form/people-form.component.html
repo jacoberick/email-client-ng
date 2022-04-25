@@ -3,30 +3,34 @@
     <p class="my-5">Added 5/3/2022</p>
     <hr class="border border-black" />
   </div>
-  <div
-    class="my-12"
-    ngClass="{{ actionType === editEnum ? 'mb-12 mt-8' : 'my-12' }}"
-  >
-    <div *ngFor="let input of inputInfoArray" class="my-7 flex">
-      <label
-        for="{{ input.name }}"
-        class="bg-black text-white px-7 flex justify-center items-center whitespace-nowrap"
-      >
-        {{ input.labelText }}
-      </label>
-      <input
-        class="w-full border-3 border-black h-12 focus:border-purple outline-none pl-3 placeholder-lavender text-sm mr-40"
-        type="text"
-        name="{{ input.name }}"
-        id="{{ input.name }}"
-        placeholder="{{ input.placeholderText }}"
-      />
+  <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+    <div
+      class="my-12"
+      ngClass="{{ actionType === editEnum ? 'mb-12 mt-8' : 'my-12' }}"
+    >
+      <div *ngFor="let input of inputInfoArray" class="my-7 flex">
+        <label
+          for="{{ input.name }}"
+          class="bg-black text-white px-7 flex justify-center items-center whitespace-nowrap"
+        >
+          {{ input.labelText }}
+        </label>
+        <input
+          formControlName="{{ input.name }}"
+          class="w-full border-3 border-black h-12 focus:border-purple outline-none pl-3 placeholder-lavender text-sm mr-40"
+          type="text"
+          name="{{ input.name }}"
+          id="{{ input.name }}"
+          placeholder="{{ input.placeholderText }}"
+        />
+      </div>
     </div>
-  </div>
-  <hr class="my-8 border border-black" />
-  <button
-    class="border-3 border-purple text-purple p-2 hover:bg-purple hover:text-white transition-all"
-  >
-    {{ buttonText }}
-  </button>
+    <hr class="my-8 border border-black" />
+    <button
+      type="submit"
+      class="border-3 border-purple text-purple p-2 hover:bg-purple hover:text-white transition-all"
+    >
+      {{ buttonText }}
+    </button>
+  </form>
 </div>

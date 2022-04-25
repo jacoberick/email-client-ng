@@ -36,20 +36,22 @@
       </div>
       <a
         *ngFor="let people of filteredPeopleList"
-        routerLink="/people/{{ people.name }}"
+        routerLink="/people/{{ people.id }}"
         class="flex justify-between mb-3 hover:bg-violet-200 transition-all hover:rounded-sm"
       >
         <div class="flex items-center">
-          <p class="font-bold">{{ people.name }}</p>
+          <p class="font-bold">
+            {{ people.first_name }} {{ people.last_name }}
+          </p>
           <p class="ml-2">({{ people.email }})</p>
-          <p *ngIf="!people.subscribed" class="text-xs text-gray-500 ml-4">
+          <p *ngIf="!people.is_subscribed" class="text-xs text-gray-500 ml-4">
             Unsubscribed
           </p>
         </div>
-        <p>{{ people.dateAdded }}</p>
+        <p>Added {{ people.created_at }}</p>
       </a>
       <p *ngIf="filteredPeopleList.length === 0" class="text-center">
-        No people found :(
+        No users found.
       </p>
     </div>
   </div>

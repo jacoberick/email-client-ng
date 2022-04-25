@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-people',
@@ -6,44 +7,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./people.component.css'],
 })
 export class PeopleComponent implements OnInit {
-  // dummy data to simulate database for now
-  peopleInfoArr: Array<any> = [
-    {
-      name: 'John Doe',
-      email: 'johnnyboy@readybase.com',
-      dateAdded: 'Added 5/3/2019',
-      subscribed: true,
-    },
-    {
-      name: 'Kate White',
-      email: 'katelyn@readybase.com',
-      dateAdded: 'Added 7/23/2021',
-      subscribed: true,
-    },
-    {
-      name: 'Luke Skywalka',
-      email: 'bluelightsaber@readybase.com',
-      dateAdded: 'Added 10/4/2019',
-      subscribed: false,
-    },
-  ];
+  // stores original people data
+  peopleInfoArr: Array<any> = [];
 
-  // list to render subscriber elements from
+  // list to render/filter people elements from
   filteredPeopleList: Array<any> = [...this.peopleInfoArr];
 
-  numOfSubs: Number = this.peopleInfoArr.filter((person) => person.subscribed)
-    .length;
+  numOfSubs!: Number;
 
-  constructor() {}
+  constructor(public authService: AuthService) {}
 
   filterPeopleArr(event: KeyboardEvent) {
     let searchText = (event.target as HTMLInputElement).value.toLowerCase();
     this.filteredPeopleList = this.peopleInfoArr.filter(
       (person) =>
-        person.name.toLowerCase().includes(searchText) ||
+        person.first_name.toLowerCase().includes(searchText) ||
+        person.last_name.toLowerCase().includes(searchText) ||
         person.email.toLowerCase().includes(searchText)
     );
   }
 
-  ngOnInit(): void {}
+  // function to retrieve people data onInit
+  async fetchPeopleData(): Promise<void> {
+    const user_id = this.authService.getUserId();
+    await fetch(
+      `http://localhost:3000/api/people?${new URLSearchParams({
+        id: user_id,
+      })}`,
+      {}
+    )
+      .then((res) => res.json())
+      .then((data) => (this.peopleInfoArr = data));
+
+    // set filtered arr to new people data
+    this.filteredPeopleList = [...this.peopleInfoArr];
+
+    // finds number of people subscribed and sets variable
+    this.numOfSubs = this.peopleInfoArr.filter(
+      (person) => person.is_subscribed
+    ).length;
+  }
+
+  ngOnInit(): void {
+    this.fetchPeopleData();
+  }
 }

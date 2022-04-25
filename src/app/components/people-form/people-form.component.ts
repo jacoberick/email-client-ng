@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { PeopleEditAddEnum } from '../../enums/people-edit-add-enum';
 
 interface peopleInput {
@@ -18,15 +20,21 @@ export class PeopleFormComponent implements OnInit {
   editEnum: PeopleEditAddEnum = PeopleEditAddEnum.edit;
   addEnum: PeopleEditAddEnum = PeopleEditAddEnum.add;
 
+  personForm = this.formBuilder.group({
+    first_name: new FormControl(''),
+    last_name: new FormControl(''),
+    email: new FormControl(''),
+  });
+
   inputInfoArray: Array<peopleInput> = [
     {
       labelText: 'First Name',
-      name: 'fname',
+      name: 'first_name',
       placeholderText: '',
     },
     {
       labelText: 'Last Name',
-      name: 'lname',
+      name: 'last_name',
       placeholderText: '',
     },
     {
@@ -36,7 +44,21 @@ export class PeopleFormComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
+
+  onSubmit() {
+    let user_id = this.authService.getUserId();
+    let created_at = new Date().toLocaleDateString();
+    this.authService.handlePeopleSubmit(
+      this.personForm,
+      user_id,
+      '/people/add',
+      created_at
+    );
+  }
 
   ngOnInit(): void {}
 }

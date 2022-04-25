@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const { nextTick } = require("process");
+const { json } = require("body-parser");
 const app = express();
 
 // bcrypt
@@ -30,8 +31,10 @@ db.connect((err) => {
   if (err) throw err;
   console.log("MySql Connected.");
   let sql = `CREATE DATABASE IF NOT EXISTS emailclientdb; 
-    CREATE TABLE IF NOT EXISTS users (user_id VARCHAR(255), first_name VARCHAR(255), 
-    last_name VARCHAR(255), email VARCHAR(255), password VARCHAR(255));`;
+    CREATE TABLE IF NOT EXISTS users (id VARCHAR(255), first_name VARCHAR(255), 
+    last_name VARCHAR(255), email VARCHAR(255), password VARCHAR(255));
+    CREATE TABLE IF NOT EXISTS people (id VARCHAR(255), user_id VARCHAR(255), first_name VARCHAR(255), last_name VARCHAR(255), email VARCHAR(255), is_subscribed BOOLEAN,  created_at VARCHAR(255));
+    `;
   db.query(sql, (err, result) => {
     if (err) throw err;
     console.log("Database is connected and ready.");
@@ -82,10 +85,10 @@ passport.deserializeUser(function (user, done) {
 // requests
 
 // signup POST
-app.post("/signup", async (req, res) => {
+app.post("/api/signup", async (req, res) => {
   const { first_name, last_name, email, password } = req.body;
   const success = true;
-  const user_id = crypto.randomBytes(16).toString("hex");
+  const id = crypto.randomBytes(16).toString("hex");
 
   db.query(`SELECT * FROM users WHERE email = '${email}'`, (err, result) => {
     if (err) throw error;
@@ -99,24 +102,58 @@ app.post("/signup", async (req, res) => {
 
     bcrypt.hash(password, saltRounds, (err, hash) => {
       if (err) throw err;
-      let sql = `INSERT INTO users (user_id, first_name, last_name, email, password) VALUES ('${user_id}', '${first_name}', '${last_name}', '${email}', '${hash}');`;
+      let sql = `INSERT INTO users (id, first_name, last_name, email, password) VALUES ('${id}', '${first_name}', '${last_name}', '${email}', '${hash}');`;
       db.query(sql, (err, user) => {
         if (err) throw err;
-        res.json({ first_name, last_name, email, success });
+        res.json({ id, first_name, last_name, email, success });
       });
     });
   });
 });
 
 // login POST
-app.post("/login", passport.authenticate("local", {}), function (req, res) {
+app.post("/api/login", passport.authenticate("local", {}), function (req, res) {
   const { email } = req.body;
-  db.query(`SELECT * FROM users WHERE email = '${email}'`, (err, result) => {
-    if (err) throw error;
-    let accountInfo = result[0];
-    accountInfo.success = true;
-    res.json({ ...accountInfo });
+  db.query(
+    `SELECT id, first_name, last_name, email FROM users WHERE email = '${email}'`,
+    (err, result) => {
+      if (err) throw error;
+      let accountInfo = result[0];
+      accountInfo.success = true;
+      res.json({ ...accountInfo });
+    }
+  );
+});
+
+// add person POST
+app.post("/api/people/add", (req, res) => {
+  const { first_name, last_name, email, user_id, created_at } = req.body;
+  const id = crypto.randomBytes(16).toString("hex");
+  let sql = `INSERT INTO people (id, user_id, first_name, last_name, email, is_subscribed, created_at) 
+  VALUES ('${id}', '${user_id}', '${first_name}', '${last_name}', '${email}', 1, '${created_at}');`;
+
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    db.query(
+      `SELECT * from people WHERE user_id = '${user_id}'`,
+      (err, result) => {
+        if (err) throw err;
+        res.sendStatus(201);
+      }
+    );
   });
+});
+
+// people GET
+app.get("/api/people", (req, res) => {
+  let user_id = req.query.id;
+  db.query(
+    `SELECT * from people WHERE user_id = '${user_id}'`,
+    (err, result) => {
+      if (err) throw err;
+      res.json(result);
+    }
+  );
 });
 
 app.listen("3000", () => {

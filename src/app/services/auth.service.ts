@@ -14,17 +14,17 @@ export class AuthService {
 
   constructor(private router: Router) {}
 
-  setSessionStorage(responseObj: any) {
-    sessionStorage.setItem('auth', responseObj);
-  }
-
   onLogout() {
     sessionStorage.clear();
   }
 
+  getUserId() {
+    return JSON.parse(sessionStorage.getItem('auth') as string).id;
+  }
+
   // onSubmit function for login and signup forms
   async handleSubmit(formData: FormGroup, path: string): Promise<void> {
-    await fetch(`http://localhost:3000/${path}`, {
+    await fetch(`http://localhost:3000/api/${path}`, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -38,18 +38,31 @@ export class AuthService {
         return res;
       })
       .then((data) => {
-        this.setSessionStorage(
-          JSON.stringify(data, [
-            'first_name',
-            'last_name',
-            'email',
-            'success',
-            'message',
-          ])
-        );
+        sessionStorage.setItem('auth', JSON.stringify(data));
       })
       .then(() => {
         this.isAuthed ? this.router.navigate(['broadcasts']) : null;
       });
+  }
+
+  async handlePeopleSubmit(
+    form_data: FormGroup,
+    user_id: string,
+    path: string,
+    created_at: any
+  ): Promise<void> {
+    let request = form_data.value;
+    request.user_id = user_id;
+    request.created_at = created_at;
+    await fetch(`http://localhost:3000/api${path}`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request),
+    }).then((res) =>
+      res.status === 201 ? this.router.navigate(['people']) : null
+    );
   }
 }
