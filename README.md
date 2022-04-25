@@ -12,6 +12,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 This project utilizes a local SQL database. Be sure to have a local SQL instance running.
 
+Create database by running `CREATE DATABASE emailclientdb;`
+
 Navigate to `./server`.
 
 Run `npm i` to install node dependencies.
