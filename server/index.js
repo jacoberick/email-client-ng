@@ -144,16 +144,38 @@ app.post("/api/people/add", (req, res) => {
   });
 });
 
+// update person PUT
+app.put("/api/people/update", (req, res) => {
+  console.log(req.body);
+  const { first_name, last_name, email, cont_id } = req.body;
+  db.query(
+    `UPDATE people SET first_name = '${first_name}', last_name = '${last_name}', email = '${email}' WHERE id = '${cont_id}'`,
+    (err, result) => {
+      if (err) throw err;
+      res.sendStatus(201);
+    }
+  );
+});
+
 // people GET
 app.get("/api/people", (req, res) => {
   let user_id = req.query.id;
   db.query(
-    `SELECT * from people WHERE user_id = '${user_id}'`,
+    `SELECT * FROM people WHERE user_id = '${user_id}'`,
     (err, result) => {
       if (err) throw err;
       res.json(result);
     }
   );
+});
+
+// get individual person(contact)
+app.get("/api/people/id", (req, res) => {
+  let cont_id = req.query.id;
+  db.query(`SELECT * FROM people WHERE id = '${cont_id}'`, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
 });
 
 app.listen("3000", () => {

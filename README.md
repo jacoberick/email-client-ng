@@ -34,6 +34,7 @@ Run `npm run start` to launch the api server.
 - Sign out
 - Protected routes
 - Add contacts to people page
+- Update contact information
 - Search contacts by name or email
 - WYSIWYG Editor for creating broadcasts
 
@@ -41,7 +42,6 @@ Run `npm run start` to launch the api server.
 
 - Send broadcasts to people list
 - Receive responses
-- Update contact information
 - Display previously sent broadcasts
 
 ## Available Routes

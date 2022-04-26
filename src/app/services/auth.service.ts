@@ -45,6 +45,7 @@ export class AuthService {
       });
   }
 
+  // onSubmit function for adding people(contacts)
   async handlePeopleSubmit(
     form_data: FormGroup,
     user_id: string,
@@ -56,6 +57,25 @@ export class AuthService {
     request.created_at = created_at;
     await fetch(`http://localhost:3000/api${path}`, {
       method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request),
+    }).then((res) =>
+      res.status === 201 ? this.router.navigate(['people']) : null
+    );
+  }
+
+  //onSubmit function for updating person(contact)
+  async handlePersonUpdate(
+    form_data: FormGroup,
+    cont_id: string
+  ): Promise<void> {
+    let request = form_data.value;
+    request.cont_id = cont_id;
+    await fetch(`http://localhost:3000/api/people/update`, {
+      method: 'PUT',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',

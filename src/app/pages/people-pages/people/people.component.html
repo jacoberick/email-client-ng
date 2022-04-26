@@ -36,7 +36,8 @@
       </div>
       <a
         *ngFor="let people of filteredPeopleList"
-        routerLink="/people/{{ people.id }}"
+        routerLink="/people/{{ people.first_name + people.last_name }}"
+        [queryParams]="{ cont_id: people.id }"
         class="flex justify-between mb-3 hover:bg-violet-200 transition-all hover:rounded-sm"
       >
         <div class="flex items-center">
