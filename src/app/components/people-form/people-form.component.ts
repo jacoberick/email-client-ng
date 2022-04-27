@@ -15,11 +15,21 @@ interface peopleInput {
   styleUrls: ['./people-form.component.css'],
 })
 export class PeopleFormComponent implements OnInit {
-  contactId!: string;
-  @Input() buttonText!: string;
-  @Input() actionType!: PeopleEditAddEnum;
   editEnum: PeopleEditAddEnum = PeopleEditAddEnum.edit;
   addEnum: PeopleEditAddEnum = PeopleEditAddEnum.add;
+  @Input() buttonText!: string;
+  @Input() actionType!: PeopleEditAddEnum;
+  @Input() contactInfo?: any;
+
+  // when contactInfo is updated from parent, fill in form values
+  ngOnChanges() {
+    if (this.actionType == this.editEnum)
+      this.personForm.setValue({
+        first_name: this.contactInfo.first_name ?? '',
+        last_name: this.contactInfo.last_name ?? '',
+        email: this.contactInfo.email ?? '',
+      });
+  }
 
   // array to build inputs from
   inputInfoArray: Array<peopleInput> = [
@@ -45,8 +55,7 @@ export class PeopleFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private route: ActivatedRoute
+    private authService: AuthService
   ) {}
 
   // conditionally returns correct submit function dependent on actionType
@@ -61,34 +70,11 @@ export class PeopleFormComponent implements OnInit {
           '/people/add',
           created_at
         )
-      : this.authService.handlePersonUpdate(this.personForm, this.contactId);
+      : this.authService.handlePersonUpdate(
+          this.personForm,
+          this.contactInfo.id
+        );
   }
 
-  // function to retrieve contact data onInit
-  async fetchPeopleData(): Promise<void> {
-    const cont_id = this.contactId;
-    await fetch(
-      `http://localhost:3000/api/people/id?${new URLSearchParams({
-        id: cont_id,
-      })}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        this.personForm.setValue({
-          first_name: data[0].first_name,
-          last_name: data[0].last_name,
-          email: data[0].email,
-        });
-      });
-  }
-
-  // if actionType is edit, pull selected contact info from api
-  ngOnInit(): void {
-    if (this.actionType == this.editEnum) {
-      this.route.queryParams.subscribe((params) => {
-        this.contactId = params['cont_id'];
-      });
-      this.fetchPeopleData();
-    }
-  }
+  ngOnInit(): void {}
 }

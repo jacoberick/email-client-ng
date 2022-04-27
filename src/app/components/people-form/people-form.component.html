@@ -1,6 +1,6 @@
 <div class="max-w-3.5xl">
   <div *ngIf="actionType === editEnum">
-    <p class="my-5">Added 5/3/2022</p>
+    <p class="my-5">Added {{ contactInfo.created_at }}</p>
     <hr class="border border-black" />
   </div>
   <form [formGroup]="personForm" (ngSubmit)="onSubmit()">

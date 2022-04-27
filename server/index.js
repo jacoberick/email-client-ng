@@ -146,7 +146,6 @@ app.post("/api/people/add", (req, res) => {
 
 // update person PUT
 app.put("/api/people/update", (req, res) => {
-  console.log(req.body);
   const { first_name, last_name, email, cont_id } = req.body;
   db.query(
     `UPDATE people SET first_name = '${first_name}', last_name = '${last_name}', email = '${email}' WHERE id = '${cont_id}'`,
