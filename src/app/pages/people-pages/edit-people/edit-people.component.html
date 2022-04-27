@@ -2,13 +2,14 @@
   <app-sidebar></app-sidebar>
   <div class="flex-1">
     <app-page-header
-      headerText="John Doe"
+      headerText="{{ contactInfo.first_name }} {{ contactInfo.last_name }}"
       imgLink="../../assets/people-page-icons/menu-icon.png"
       [showMenu]="true"
     ></app-page-header>
     <app-people-form
       [actionType]="editEnum"
       buttonText="Update"
+      [contactInfo]="contactInfo"
     ></app-people-form>
   </div>
 </div>
