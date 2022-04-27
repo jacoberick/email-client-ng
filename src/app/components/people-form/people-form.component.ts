@@ -31,6 +31,13 @@ export class PeopleFormComponent implements OnInit {
       });
   }
 
+  // controllers for person inputs
+  personForm = this.formBuilder.group({
+    first_name: new FormControl(''),
+    last_name: new FormControl(''),
+    email: new FormControl(''),
+  });
+
   // array to build inputs from
   inputInfoArray: Array<peopleInput> = [
     {
@@ -47,16 +54,17 @@ export class PeopleFormComponent implements OnInit {
     },
   ];
 
-  personForm = this.formBuilder.group({
-    first_name: new FormControl(''),
-    last_name: new FormControl(''),
-    email: new FormControl(''),
-  });
-
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService
   ) {}
+
+  // fixes cursor at the beginning of text bug
+  onInputClick(e: MouseEvent) {
+    let input = e.target! as HTMLInputElement;
+    let lengthOfText = input.value.length;
+    input.setSelectionRange(lengthOfText, lengthOfText);
+  }
 
   // conditionally returns correct submit function dependent on actionType
   onSubmit() {
