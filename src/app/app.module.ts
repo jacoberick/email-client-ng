@@ -25,6 +25,7 @@ import { IdBroadcastComponent } from './pages/broadcasts-pages/id-broadcast/id-b
 import { CreateBroadcastComponent } from './pages/create-broadcast/create-broadcast.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditPeopleComponent,
     IdBroadcastComponent,
     CreateBroadcastComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

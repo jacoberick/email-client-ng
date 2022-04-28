@@ -17,6 +17,7 @@ module.exports = {
       },
       colors: {
         black: "#121212",
+        transpBlack: "rgba(18,18,18, 0.5)",
         purple: "#7A28FF",
         lavender: "#c39eff",
         translucentPurp: "#e1cfff",
