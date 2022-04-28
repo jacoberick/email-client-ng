@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { PeopleEditAddEnum } from '../../enums/people-edit-add-enum';
-import { ActivatedRoute } from '@angular/router';
 
 interface peopleInput {
   labelText: string;
