@@ -177,6 +177,15 @@ app.get("/api/people/id", (req, res) => {
   });
 });
 
+// delete individual person(contact)
+app.delete("/api/people/id", (req, res) => {
+  let { cont_id } = req.body;
+  db.query(`DELETE FROM people WHERE id = '${cont_id}'`, (err, result) => {
+    if (err) throw err;
+    res.sendStatus(201);
+  });
+});
+
 app.listen("3000", () => {
   console.log("Server started on port 3000");
 });

@@ -85,4 +85,20 @@ export class AuthService {
       res.status === 201 ? this.router.navigate(['people']) : null
     );
   }
+
+  // onSubmit function for deleting person(contact)
+  async deletePerson(cont_id: string) {
+    let request = { cont_id: cont_id };
+    console.log(request);
+    await fetch(`http://localhost:3000/api/people/id`, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request),
+    }).then((res) =>
+      res.status === 201 ? this.router.navigate(['people']) : null
+    );
+  }
 }
