@@ -33,8 +33,7 @@ Run `npm run start` to launch the api server.
 - Sign up/in authentication
 - Sign out
 - Protected routes
-- Add contacts to people page
-- Update contact information
+- CRUD operations for contacts
 - Search contacts by name or email
 - WYSIWYG Editor for creating broadcasts
 
